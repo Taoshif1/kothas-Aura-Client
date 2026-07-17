@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes: kotha --default, dark;
+}
+
+@plugin "daisyui/theme" {
+  name: "kotha";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+
+  --color-primary: #D98C9A;
+  --color-primary-content: #ffffff;
+
+  --color-secondary: #C98A7D;
+  --color-secondary-content: #ffffff;
+
+  --color-accent: #E8B7C0;
+  --color-accent-content: #3F2E33;
+
+  --color-neutral: #3F2E33;
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #FDF5F6;
+  --color-base-200: #F9E7EA;
+  --color-base-300: #F3DADF;
+  --color-base-content: #3F2E33;
+
+  --color-info: #7DB9DE;
+  --color-success: #4CAF7D;
+  --color-warning: #F5B971;
+  --color-error: #E57373;
+
+  --radius-box: 1rem;
+  --radius-btn: 999px;
+  --radius-field: .75rem;
+
+  --border: 1px;
+
+  --depth: 0;
+  --noise: 0;
+}
+
+/* ---------- Google Fonts ---------- */
+
+.playfair {
+  font-family: "Playfair Display", serif;
+}
+
+.poppins {
+  font-family: "Poppins", sans-serif;
+}
+
+/* ---------- Global ---------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #FDF5F6;
+  color: #3F2E33;
+}
+
+/* ---------- Container ---------- */
+
+.container-x {
+  width: min(92%, 1400px);
+  margin-inline: auto;
+}
+
+/* ---------- Section ---------- */
+
+.section-padding {
+  padding: 5rem 0;
+}
+
+/* ---------- Heading ---------- */
+
+.heading {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+}
+
+/* ---------- Transition ---------- */
+
+.transition-default {
+  transition: all .3s ease;
+}
