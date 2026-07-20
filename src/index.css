@@ -58,6 +58,10 @@ html {
   scroll-behavior: smooth;
 }
 
+header {
+  will-change: backdrop-filter;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   background: #FDF5F6;
@@ -74,7 +78,7 @@ body {
 /* ---------- Section ---------- */
 
 .section-padding {
-  padding: 5rem 0;
+  padding: 6rem 0;
 }
 
 /* ---------- Heading ---------- */
@@ -88,4 +92,106 @@ body {
 
 .transition-default {
   transition: all .3s ease;
+}
+
+/* ===============================
+   Reusable Hover
+================================ */
+
+.hover-primary:hover {
+  color: var(--color-primary);
+}
+
+.icon-button {
+
+  @apply flex h-11 w-11 items-center justify-center rounded-full;
+
+  transition: .3s ease;
+}
+
+.icon-button:hover {
+
+  background: var(--color-base-200);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.nav-link {
+  position: relative;
+  font-weight: 500;
+  letter-spacing: .4px;
+  transition: .3s;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: .3s;
+}
+
+.nav-link:hover {
+  color: var(--color-primary);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: var(--color-primary);
+}
+
+.nav-link.active::after {
+  width: 100%;
+}
+
+.icon-button svg {
+  font-size: 1.2rem;
+}
+
+.logo-hover {
+  transition: .35s;
+}
+
+.logo-hover:hover {
+  transform: scale(1.02);
+}
+
+/* ---------- Footer  ---------- */
+.footer-link {
+  display: block;
+  color: rgba(255, 255, 255, 0.75);
+  transition: .3s;
+}
+
+.footer-link:hover {
+  color: var(--color-primary);
+  transform: translateX(6px);
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 46px;
+  height: 46px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, .08);
+
+  transition: .35s;
+}
+
+.footer-social:hover {
+  background: var(--color-primary);
+  color: white;
+
+  transform: translateY(-4px);
 }
