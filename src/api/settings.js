@@ -1,0 +1,1 @@
+import apiClient from"./apiClient";export const getSettings=async()=>(await apiClient.get("/settings")).data.settings;export const updateSettings=async(v)=>(await apiClient.patch("/settings",v)).data.settings;

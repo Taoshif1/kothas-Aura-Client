@@ -1,9 +1,4 @@
-const MyOrders = () => {
-    return (
-        <div>
-            My Orders Page Content here
-        </div>
-    );
-};
-
-export default MyOrders;
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { getOrders } from "../../api/orders";
+const MyOrders=()=>{const[orders,setOrders]=useState([]);const[error,setError]=useState("");useEffect(()=>{getOrders().then(setOrders).catch(e=>setError(e.response?.data?.message||"Could not load orders."));},[]);return <section><h1 className="heading text-4xl">My Orders</h1>{error&&<div className="alert alert-error mt-5">{error}</div>}<div className="mt-7 space-y-4">{orders.map(order=><Link key={order._id} to={`/dashboard/orders/${order._id}`} className="grid gap-3 rounded-3xl bg-white p-6 shadow-sm md:grid-cols-6"><strong>{order.orderNumber}</strong><span>{new Date(order.createdAt).toLocaleDateString()}</span><span>{order.items.reduce((sum,item)=>sum+item.quantity,0)} items</span><span>৳ {order.total}</span><span>{order.payment.status.replaceAll("_"," ")}</span><span className="font-semibold text-primary">{order.orderStatus}</span></Link>)}{!error&&!orders.length&&<div className="rounded-3xl bg-white p-10 text-center">You have not placed an order yet.</div>}</div></section>};export default MyOrders;
