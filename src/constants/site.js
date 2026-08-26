@@ -1,3 +1,4 @@
+import { FiHeart, FiHome, FiPackage, FiSettings, FiUser } from "react-icons/fi";
 import { ROUTES } from "./routes";
 
 export const SITE = {
@@ -30,3 +31,31 @@ export const SITE = {
     },
   ],
 };
+
+export const dashboardLinks = [
+  {
+    name: "Dashboard",
+    path: ROUTES.DASHBOARD_HOME,
+    icon: FiHome,
+  },
+  {
+    name: "My Profile",
+    path: ROUTES.PROFILE,
+    icon: FiUser,
+  },
+  {
+    name: "Orders",
+    path: ROUTES.ORDERS,
+    icon: FiPackage,
+  },
+  {
+    name: "Wishlist",
+    path: ROUTES.WISHLIST,
+    icon: FiHeart,
+  },
+  {
+    name: "Settings",
+    path: ROUTES.SETTINGS,
+    icon: FiSettings,
+  },
+];

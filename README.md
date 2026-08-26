@@ -117,6 +117,7 @@ Kotha's Aura is a full-stack MERN e-commerce application focused on elegance, pe
 
 # 📁 Folder Structure
 
+
 ```bash
 client
 ├─ eslint.config.js
@@ -148,6 +149,12 @@ client
 │  │  │  ├─ Loader.jsx
 │  │  │  ├─ ProductCard.jsx
 │  │  │  └─ SectionTitle.jsx
+│  │  ├─ dashboard
+│  │  │  ├─ DashboardCard.jsx
+│  │  │  ├─ DashboardNavbar.jsx
+│  │  │  ├─ DashboardSidebar.jsx
+│  │  │  ├─ DashboardStat.jsx
+│  │  │  └─ UserDropdown.jsx
 │  │  ├─ home
 │  │  │  ├─ BrandStory.jsx
 │  │  │  ├─ Categories.jsx
@@ -164,25 +171,41 @@ client
 │  │  ├─ colors.js
 │  │  ├─ routes.js
 │  │  └─ site.js
+│  ├─ context
+│  │  └─ AuthContext.jsx
 │  ├─ data
 │  │  ├─ categoryData.js
 │  │  ├─ heroData.js
 │  │  └─ productData.js
 │  ├─ firebase
+│  │  └─ firebase.config.js
 │  ├─ hooks
+│  │  ├─ useAuth.js
 │  │  └─ useHero.js
 │  ├─ index.css
 │  ├─ layouts
+│  │  ├─ DashboardLayout.jsx
 │  │  └─ MainLayout.jsx
 │  ├─ main.jsx
 │  ├─ pages
 │  │  ├─ About.jsx
 │  │  ├─ Contact.jsx
+│  │  ├─ dashboard
+│  │  │  ├─ Cart.jsx
+│  │  │  ├─ DashboardHome.jsx
+│  │  │  ├─ MyOrders.jsx
+│  │  │  ├─ MyProfile.jsx
+│  │  │  ├─ Settings.jsx
+│  │  │  └─ Wishlist.jsx
 │  │  ├─ Error.jsx
 │  │  ├─ Home.jsx
+│  │  ├─ Login.jsx
+│  │  ├─ Register.jsx
 │  │  └─ Shop.jsx
 │  ├─ providers
+│  │  └─ AuthProvider.jsx
 │  ├─ routes
+│  │  ├─ PrivateRoute.jsx
 │  │  └─ router.jsx
 │  └─ utils
 └─ vite.config.js
@@ -315,10 +338,10 @@ The project follows a scalable component-based architecture.
 Building modern, scalable, and premium web experiences for businesses.
 
 GitHub:
-https://github.com/Taoshif1
+[GitHub](https://github.com/Taoshif1)
 
 Portfolio:
-https://taoshif1.github.io/AI-Portfolio/
+[Portfolio](https://taoshif1.github.io/webdevportfolio/)
 
 ---
 
@@ -369,3 +392,4 @@ Current Progress
 ---
 
 If you like this project, consider giving it a ⭐ on GitHub!
+

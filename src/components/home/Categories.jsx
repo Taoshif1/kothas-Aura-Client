@@ -1,39 +1,6 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { categoryData } from "../../data/categoryData";
+import { getCategories } from "../../api/categories";
 import SectionTitle from "../common/SectionTitle";
-
-const Categories = () => {
-  return (
-    <section className="section-padding">
-      <div className="container-x">
-        <SectionTitle subtitle="Collections" title="Shop By Category" />
-
-        <div className="mt-14 grid gap-8 md:grid-cols-3">
-          {categoryData.map((category) => (
-            <Link
-              key={category.id}
-              className="group overflow-hidden rounded-3xl"
-            >
-              <div className="relative h-[420px]">
-                <img
-                  src={category.image}
-                  className="h-full w-full object-cover duration-700 group-hover:scale-110"
-                />
-
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-
-                <div className="absolute bottom-8 left-8">
-                  <h3 className="heading text-3xl text-white">
-                    {category.name}
-                  </h3>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
+const Categories = () => { const [categories, setCategories] = useState([]); useEffect(() => { const controller = new AbortController(); getCategories(controller.signal).then((data) => setCategories(data.categories)).catch(() => setCategories([])); return () => controller.abort(); }, []); return <section className="section-padding"><div className="container-x"><SectionTitle subtitle="Collections" title="Shop By Category" />{categories.length ? <div className="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-3">{categories.map((category) => <Link to={`/shop?category=${encodeURIComponent(category.name)}`} key={category._id} className="group overflow-hidden rounded-3xl"><div className="relative h-[420px] bg-gradient-to-br from-base-200 to-base-300">{category.image && <img src={category.image} alt={category.name} className="h-full w-full object-cover duration-700 group-hover:scale-110" />}<div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" /><h3 className="heading absolute bottom-8 left-8 text-3xl text-white">{category.name}</h3></div></Link>)}</div> : <p className="mt-14 rounded-3xl border border-base-300 p-12 text-center text-neutral/60">Collections will appear here after categories are added.</p>}</div></section>; };
 export default Categories;

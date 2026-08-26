@@ -1,0 +1,5 @@
+import { useEffect, useState } from "react";
+import { getAdminProducts } from "../../api/products";
+import { getCategories } from "../../api/categories";
+const AdminOverview = () => { const [stats, setStats] = useState({ products: 0, active: 0, categories: 0, low: 0 }); useEffect(() => { Promise.all([getAdminProducts(), getCategories()]).then(([p, c]) => setStats({ products: p.count, active: p.products.filter((x) => x.active).length, categories: c.count, low: p.products.filter((x) => x.active && x.stock <= (x.lowStockThreshold ?? 5)).length })).catch(() => null); }, []); return <section><p className="uppercase tracking-[4px] text-primary">Store management</p><h1 className="heading mt-2 text-5xl">Overview</h1><div className="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">{[["Total Products", stats.products], ["Active Products", stats.active], ["Categories", stats.categories], ["Low Stock", stats.low]].map(([label, value]) => <div key={label} className="rounded-3xl bg-white p-7 shadow-sm"><p className="text-neutral/60">{label}</p><p className="mt-2 text-4xl font-bold text-primary">{value}</p></div>)}</div></section>; };
+export default AdminOverview;

@@ -2,14 +2,18 @@ import { Link } from "react-router-dom";
 import { FiHeart, FiShoppingBag, FiStar } from "react-icons/fi";
 
 const ProductCard = ({ product }) => {
+  const id = product._id || product.id;
+  const name = product.name || product.title;
+  const image = product.images?.[0] || product.image;
+
   return (
     <article className="group overflow-hidden rounded-3xl border border-base-300 bg-base-100 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
       {/* Image */}
 
       <div className="relative overflow-hidden">
         <img
-          src={product.image}
-          alt={product.title}
+          src={image}
+          alt={name}
           className="h-80 w-full object-cover duration-700 group-hover:scale-110"
         />
 
@@ -32,14 +36,14 @@ const ProductCard = ({ product }) => {
         </p>
 
         <Link
-          to={`/product/${product.id}`}
+          to={`/product/${id}`}
           className="heading block text-2xl transition hover:text-primary"
         >
-          {product.title}
+          {name}
         </Link>
 
         <div className="flex items-center gap-1 text-warning">
-          {[...Array(Math.round(product.rating))].map((_, index) => (
+          {[...Array(Math.round(product.rating || 0))].map((_, index) => (
             <FiStar key={index} className="fill-current" />
           ))}
         </div>

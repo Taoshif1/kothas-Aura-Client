@@ -195,3 +195,12 @@ body {
 
   transform: translateY(-4px);
 }
+
+.input {
+  transition: .3s ease;
+}
+
+.input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(217, 140, 154, .15);
+}
