@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-import { FiGrid, FiHeart, FiPackage, FiSettings, FiUser } from "react-icons/fi";
+import { FiGrid, FiHeart, FiMapPin, FiPackage, FiSettings, FiUser } from "react-icons/fi";
 
 const DashboardSidebar = () => {
   return (
@@ -53,6 +53,10 @@ const DashboardSidebar = () => {
         >
           <FiHeart />
           Wishlist
+        </NavLink>
+
+        <NavLink to="/dashboard/addresses" className={({ isActive }) => `flex items-center gap-3 rounded-xl px-5 py-3 transition ${isActive ? "bg-primary text-white" : "hover:bg-base-200"}`}>
+          <FiMapPin /> Addresses
         </NavLink>
 
         <NavLink

@@ -30,6 +30,13 @@ import AdminProducts from "../pages/admin/AdminProducts";
 import ProductForm from "../pages/admin/ProductForm";
 import AdminCategories from "../pages/admin/AdminCategories";
 import AdminPlaceholder from "../pages/admin/AdminPlaceholder";
+import OrderSuccess from "../pages/OrderSuccess";
+import TrackOrder from "../pages/TrackOrder";
+import OrderDetails from "../pages/dashboard/OrderDetails";
+import Addresses from "../pages/dashboard/Addresses";
+import AdminOrders from "../pages/admin/AdminOrders";
+import AdminOrderDetails from "../pages/admin/AdminOrderDetails";
+import AdminSettings from "../pages/admin/AdminSettings";
 
 export const router = createBrowserRouter([
   {
@@ -68,6 +75,8 @@ export const router = createBrowserRouter([
       { path: "cart", element: <Cart /> },
       { path: "wishlist", element: <Wishlist /> },
       { path: "checkout", element: <Checkout /> },
+      { path: "order-success/:orderNumber", element: <OrderSuccess /> },
+      { path: "track-order", element: <TrackOrder /> },
     ],
   },
 
@@ -96,6 +105,8 @@ export const router = createBrowserRouter([
             path: "orders",
             element: <MyOrders />,
         },
+        { path: "orders/:id", element: <OrderDetails /> },
+        { path: "addresses", element: <Addresses /> },
 
         {
             path: "wishlist",
@@ -117,11 +128,12 @@ export const router = createBrowserRouter([
       { path: "products/add", element: <ProductForm /> },
       { path: "products/:id/edit", element: <ProductForm /> },
       { path: "categories", element: <AdminCategories /> },
-      { path: "orders", element: <AdminPlaceholder /> },
+      { path: "orders", element: <AdminOrders /> },
+      { path: "orders/:id", element: <AdminOrderDetails /> },
       { path: "customers", element: <AdminPlaceholder /> },
       { path: "reviews", element: <AdminPlaceholder /> },
       { path: "coupons", element: <AdminPlaceholder /> },
-      { path: "settings", element: <AdminPlaceholder /> },
+      { path: "settings", element: <AdminSettings /> },
     ],
   },
 
