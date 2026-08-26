@@ -44,7 +44,7 @@ const DashboardSidebar = () => {
         </NavLink>
 
         <NavLink
-          to="/dashboard/wishlist"
+          to="/wishlist"
           className={({ isActive }) =>
             `flex items-center gap-3 rounded-xl px-5 py-3 transition ${
               isActive ? "bg-primary text-white" : "hover:bg-base-200"

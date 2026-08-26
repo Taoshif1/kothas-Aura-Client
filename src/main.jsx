@@ -7,12 +7,18 @@ import { Toaster } from "react-hot-toast";
 import "./index.css";
 
 import AuthProvider from "./providers/AuthProvider";
+import CartProvider from "./providers/CartProvider";
+import WishlistProvider from "./providers/WishlistProvider";
 import { router } from "./routes/router";
 
 createRoot(document.getElementById("root")).render(
   <HelmetProvider>
     <AuthProvider>
-      <RouterProvider router={router} />
+      <CartProvider>
+        <WishlistProvider>
+          <RouterProvider router={router} />
+        </WishlistProvider>
+      </CartProvider>
 
       <Toaster
         position="top-right"

@@ -17,9 +17,13 @@ import Logo from "./Logo";
 import { SITE } from "../../../constants/site";
 import { ROUTES } from "../../../constants/routes";
 import useAuth from "../../../hooks/useAuth";
+import useCart from "../../../hooks/useCart";
+import useWishlist from "../../../hooks/useWishlist";
 
 const Navbar = () => {
   const { user, logoutUser } = useAuth();
+  const { count: cartCount } = useCart();
+  const { count: wishlistCount } = useWishlist();
   const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -98,12 +102,14 @@ const Navbar = () => {
                 <FiSearch />
               </button>
 
-              <button className="icon-button">
+              <Link to={ROUTES.WISHLIST} className="icon-button relative">
                 <FiHeart />
-              </button>
+                {wishlistCount > 0 && <span className="badge badge-primary badge-sm absolute -right-1 -top-1">{wishlistCount}</span>}
+              </Link>
 
-              <Link to={ROUTES.CART} className="icon-button">
+              <Link to={ROUTES.CART} className="icon-button relative">
                 <FiShoppingBag />
+                {cartCount > 0 && <span className="badge badge-primary badge-sm absolute -right-1 -top-1">{cartCount}</span>}
               </Link>
 
               {/* AUTH CONDITIONAL DROP DOWN */}

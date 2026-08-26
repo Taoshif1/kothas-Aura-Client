@@ -16,7 +16,10 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import DashboardHome from "../pages/dashboard/DashboardHome";
 import MyProfile from "../pages/dashboard/MyProfile";
 import MyOrders from "../pages/dashboard/MyOrders";
-import Wishlist from "../pages/dashboard/Wishlist";
+import { Navigate } from "react-router-dom";
+import Cart from "../pages/Cart";
+import Wishlist from "../pages/Wishlist";
+import Checkout from "../pages/Checkout";
 import Settings from "../pages/dashboard/Settings";
 
 import { ROUTES } from "../constants/routes";
@@ -62,6 +65,9 @@ export const router = createBrowserRouter([
         path: "register",
         element: <Register />,
       },
+      { path: "cart", element: <Cart /> },
+      { path: "wishlist", element: <Wishlist /> },
+      { path: "checkout", element: <Checkout /> },
     ],
   },
 
@@ -93,7 +99,7 @@ export const router = createBrowserRouter([
 
         {
             path: "wishlist",
-            element: <Wishlist />,
+            element: <Navigate to={ROUTES.WISHLIST} replace />,
         },
 
         {
