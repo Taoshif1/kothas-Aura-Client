@@ -20,7 +20,6 @@ import { Navigate } from "react-router-dom";
 import Cart from "../pages/Cart";
 import Wishlist from "../pages/Wishlist";
 import Checkout from "../pages/Checkout";
-import Settings from "../pages/dashboard/Settings";
 
 import { ROUTES } from "../constants/routes";
 import AdminRoute from "./AdminRoute";
@@ -115,7 +114,7 @@ export const router = createBrowserRouter([
 
         {
             path: "settings",
-            element: <Settings />,
+            element: <Navigate to={ROUTES.PROFILE} replace />,
         },
     ],
 },
