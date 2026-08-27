@@ -5,6 +5,7 @@ import Loader from "../components/common/Loader";
 import useAuth from "../hooks/useAuth";
 
 import { ROUTES } from "../constants/routes";
+import { Helmet } from "react-helmet-async";
 
 const PrivateRoute = ({ children }) => {
   const { user, dbUser, loading } = useAuth();
@@ -21,7 +22,7 @@ const PrivateRoute = ({ children }) => {
 
   if(dbUser.role==="admin")return <Navigate to={ROUTES.ADMIN} replace/>;
 
-  return children;
+  return <><Helmet><meta name="robots" content="noindex,nofollow"/></Helmet>{children}</>;
 };
 
 export default PrivateRoute;
