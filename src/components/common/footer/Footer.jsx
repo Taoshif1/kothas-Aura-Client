@@ -10,8 +10,10 @@ import { Link } from "react-router-dom";
 
 import { SITE } from "../../../constants/site";
 import { ROUTES } from "../../../constants/routes";
+import useAuth from"../../../hooks/useAuth";
 
 const Footer = () => {
+  const{dbUser}=useAuth();const accountPath=dbUser?.role==="admin"?ROUTES.ADMIN:dbUser?ROUTES.DASHBOARD:ROUTES.LOGIN;
   return (
     <footer className="mt-24 bg-gradient-to-b from-neutral to-[#24181b] text-neutral-content">
       <div className="container-x py-20">
@@ -62,13 +64,9 @@ const Footer = () => {
             </h3>
 
             <div className="space-y-3">
-              <p className="footer-link">Wishlist</p>
-
-              <p className="footer-link">Track Order</p>
-
-              <p className="footer-link">My Account</p>
-
-              <p className="footer-link">FAQ</p>
+              <Link to={ROUTES.WISHLIST} className="footer-link">Wishlist</Link>
+              <Link to="/track-order" className="footer-link">Track Order</Link>
+              <Link to={accountPath} className="footer-link">My Account</Link>
             </div>
           </div>
 
@@ -80,17 +78,17 @@ const Footer = () => {
             </h3>
 
             <div className="space-y-4">
-              <p className="flex items-center gap-3">
+              <a href={`tel:${SITE.phone}`} className="flex items-center gap-3 hover:text-primary">
                 <FiPhone />
 
                 {SITE.phone}
-              </p>
+              </a>
 
-              <p className="flex items-center gap-3">
+              <a href={`mailto:${SITE.email}`} className="flex items-center gap-3 hover:text-primary">
                 <FiMail />
 
                 {SITE.email}
-              </p>
+              </a>
 
               <p className="flex items-center gap-3">
                 <FiMapPin />

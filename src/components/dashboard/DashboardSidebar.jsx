@@ -68,7 +68,7 @@ const DashboardSidebar = () => {
           }
         >
           <FiSettings />
-          Settings
+          Account & Security
         </NavLink>
       </nav>
     </aside>
