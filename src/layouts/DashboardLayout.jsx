@@ -8,10 +8,10 @@ const DashboardLayout = () => {
     <div className="min-h-screen bg-base-200">
       <DashboardNavbar />
 
-      <div className="flex">
+      <div className="flex flex-col md:flex-row">
         <DashboardSidebar />
 
-        <main className="flex-1 p-8">
+        <main className="min-w-0 flex-1 p-4 sm:p-8">
           <Outlet />
         </main>
       </div>

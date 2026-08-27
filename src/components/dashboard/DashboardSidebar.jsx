@@ -4,17 +4,17 @@ import { FiGrid, FiHeart, FiMapPin, FiPackage, FiSettings, FiUser } from "react-
 
 const DashboardSidebar = () => {
   return (
-    <aside className="hidden md:block w-72 min-h-screen bg-white border-r border-base-300">
-      <div className="p-8">
+    <aside className="w-full bg-white border-b border-base-300 md:min-h-screen md:w-72 md:border-b-0 md:border-r">
+      <div className="hidden p-8 md:block">
         <h2 className="heading text-3xl">Dashboard</h2>
       </div>
 
-      <nav className="space-y-2 px-5">
+      <nav className="flex gap-2 overflow-x-auto px-4 py-3 md:block md:space-y-2 md:px-5 md:py-0">
         <NavLink
           end
           to="/dashboard"
           className={({ isActive }) =>
-            `flex items-center gap-3 rounded-xl px-5 py-3 transition ${
+            `flex shrink-0 items-center gap-3 rounded-xl px-5 py-3 transition ${
               isActive ? "bg-primary text-white" : "hover:bg-base-200"
             }`
           }
@@ -26,7 +26,7 @@ const DashboardSidebar = () => {
         <NavLink
           to="/dashboard/profile"
           className={({ isActive }) =>
-            `flex items-center gap-3 rounded-xl px-5 py-3 transition ${
+            `flex shrink-0 items-center gap-3 rounded-xl px-5 py-3 transition ${
               isActive ? "bg-primary text-white" : "hover:bg-base-200"
             }`
           }
@@ -37,7 +37,7 @@ const DashboardSidebar = () => {
 
         <NavLink
           to="/dashboard/orders"
-          className="flex items-center gap-3 rounded-xl px-5 py-3 hover:bg-base-200"
+          className={({ isActive }) => `flex shrink-0 items-center gap-3 rounded-xl px-5 py-3 ${isActive ? "bg-primary text-white" : "hover:bg-base-200"}`}
         >
           <FiPackage />
           Orders
@@ -46,7 +46,7 @@ const DashboardSidebar = () => {
         <NavLink
           to="/wishlist"
           className={({ isActive }) =>
-            `flex items-center gap-3 rounded-xl px-5 py-3 transition ${
+            `flex shrink-0 items-center gap-3 rounded-xl px-5 py-3 transition ${
               isActive ? "bg-primary text-white" : "hover:bg-base-200"
             }`
           }
@@ -55,14 +55,14 @@ const DashboardSidebar = () => {
           Wishlist
         </NavLink>
 
-        <NavLink to="/dashboard/addresses" className={({ isActive }) => `flex items-center gap-3 rounded-xl px-5 py-3 transition ${isActive ? "bg-primary text-white" : "hover:bg-base-200"}`}>
+        <NavLink to="/dashboard/addresses" className={({ isActive }) => `flex shrink-0 items-center gap-3 rounded-xl px-5 py-3 transition ${isActive ? "bg-primary text-white" : "hover:bg-base-200"}`}>
           <FiMapPin /> Addresses
         </NavLink>
 
         <NavLink
           to="/dashboard/settings"
           className={({ isActive }) =>
-            `flex items-center gap-3 rounded-xl px-5 py-3 transition ${
+            `flex shrink-0 items-center gap-3 rounded-xl px-5 py-3 transition ${
               isActive ? "bg-primary text-white" : "hover:bg-base-200"
             }`
           }
