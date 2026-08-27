@@ -7,6 +7,7 @@ import Button from "../components/common/Button";
 import useAuth from "../hooks/useAuth";
 import { ROUTES } from "../constants/routes";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import { destinationForRole } from "../utils/authDestination";
 
 const Register = () => {
   const { createUser, updateUserProfile, refreshSession } = useAuth();
@@ -17,8 +18,6 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-  const from = location.state || ROUTES.HOME;
 
   const {
     register,
@@ -38,11 +37,11 @@ const Register = () => {
       await updateUserProfile({
         displayName: data.name,
       });
-      await refreshSession(result.user);
+      const profile=await refreshSession(result.user);
 
       toast.success("Account created successfully.");
 
-      navigate(from);
+      navigate(destinationForRole(profile.role,location.state),{replace:true});
     } catch (error) {
       toast.error(error.message);
     } finally {

@@ -21,7 +21,7 @@ import useCart from "../../../hooks/useCart";
 import useWishlist from "../../../hooks/useWishlist";
 
 const Navbar = () => {
-  const { user, logoutUser } = useAuth();
+  const { user, dbUser, logoutUser } = useAuth();
   const { count: cartCount } = useCart();
   const { count: wishlistCount } = useWishlist();
   const navigate = useNavigate();
@@ -138,18 +138,18 @@ const Navbar = () => {
                   >
                     <li className="px-3 py-2 border-b border-base-100 mb-1">
                       <p className="font-semibold text-base text-neutral line-clamp-1 p-0">
-                        {user.displayName || "Welcome Back"}
+                        {dbUser?.name || user.displayName || "Welcome Back"}
                       </p>
                       <p className="text-xs text-neutral/50 font-normal line-clamp-1 p-0 mt-0.5">
-                        {user.email}
+                        {dbUser?.email || user.email}
                       </p>
                     </li>
                     <li>
                       <Link
-                        to="/dashboard"
+                        to={dbUser?.role==="admin"?ROUTES.ADMIN:ROUTES.DASHBOARD}
                         className="py-2.5 px-3 rounded-xl flex items-center gap-2 hover:text-primary"
                       >
-                        <FiSliders className="text-base" /> Dashboard
+                        <FiSliders className="text-base" /> {dbUser?.role==="admin"?"Admin Dashboard":"My Account"}
                       </Link>
                     </li>
                     <li>
