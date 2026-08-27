@@ -1,0 +1,1 @@
+import{useContext}from"react";import StoreSettingsContext from"../context/StoreSettingsContext";const useStoreSettings=()=>{const value=useContext(StoreSettingsContext);if(!value)throw new Error("useStoreSettings must be used within StoreSettingsProvider");return value};export default useStoreSettings;

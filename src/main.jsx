@@ -9,16 +9,17 @@ import "./index.css";
 import AuthProvider from "./providers/AuthProvider";
 import CartProvider from "./providers/CartProvider";
 import WishlistProvider from "./providers/WishlistProvider";
+import StoreSettingsProvider from "./providers/StoreSettingsProvider";
 import { router } from "./routes/router";
 
 createRoot(document.getElementById("root")).render(
   <HelmetProvider>
     <AuthProvider>
-      <CartProvider>
+      <StoreSettingsProvider><CartProvider>
         <WishlistProvider>
           <RouterProvider router={router} />
         </WishlistProvider>
-      </CartProvider>
+      </CartProvider></StoreSettingsProvider>
 
       <Toaster
         position="top-right"
