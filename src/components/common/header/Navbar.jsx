@@ -19,6 +19,7 @@ import { ROUTES } from "../../../constants/routes";
 import useAuth from "../../../hooks/useAuth";
 import useCart from "../../../hooks/useCart";
 import useWishlist from "../../../hooks/useWishlist";
+import SearchDialog from"./SearchDialog";
 
 const Navbar = () => {
   const { user, dbUser, logoutUser } = useAuth();
@@ -27,6 +28,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [searchOpen,setSearchOpen]=useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -98,7 +100,7 @@ const Navbar = () => {
 
             {/* RIGHT */}
             <div className="flex justify-end items-center gap-1">
-              <button className="icon-button">
+              <button type="button" onClick={()=>setSearchOpen(true)} className="icon-button" aria-label="Search products">
                 <FiSearch />
               </button>
 
@@ -208,6 +210,7 @@ const Navbar = () => {
           ))}
         </nav>
       </aside>
+      <SearchDialog open={searchOpen} onClose={()=>setSearchOpen(false)}/>
     </>
   );
 };
