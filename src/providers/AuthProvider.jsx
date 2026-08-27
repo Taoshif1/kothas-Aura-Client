@@ -37,8 +37,8 @@ const AuthProvider = ({ children }) => {
     syncRef.current = { uid: null, promise: null };
     setLoading(false);
   };
-  const loginUser = async (email, password) => { const result = await signInWithEmailAndPassword(auth, email, password); await syncSession(result.user); return result; };
-  const googleLogin = async () => { const result = await signInWithPopup(auth, googleProvider); await syncSession(result.user); return result; };
+  const loginUser = async (email, password) => { const result = await signInWithEmailAndPassword(auth, email, password); const profile=await syncSession(result.user,true); return {firebaseUser:result.user,dbUser:profile}; };
+  const googleLogin = async () => { const result = await signInWithPopup(auth, googleProvider); const profile=await syncSession(result.user,true); return {firebaseUser:result.user,dbUser:profile}; };
   const refreshSession = (firebaseUser = auth.currentUser) => syncSession(firebaseUser, true);
   return <AuthContext.Provider value={{ user, dbUser, loading, createUser: (email, password) => createUserWithEmailAndPassword(auth, email, password), loginUser, googleLogin, logoutUser, updateUserProfile: (profile) => updateProfile(auth.currentUser, profile), resetPassword: (email) => sendPasswordResetEmail(auth, email), refreshSession }}>{children}</AuthContext.Provider>;
 };

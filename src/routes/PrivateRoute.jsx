@@ -16,8 +16,10 @@ const PrivateRoute = ({ children }) => {
   }
 
   if (!user || !dbUser) {
-    return <Navigate to={ROUTES.LOGIN} replace state={location.pathname} />;
+    return <Navigate to={ROUTES.LOGIN} replace state={{from:location.pathname+location.search}} />;
   }
+
+  if(dbUser.role==="admin")return <Navigate to={ROUTES.ADMIN} replace/>;
 
   return children;
 };

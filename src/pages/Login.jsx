@@ -9,14 +9,13 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Button from "../components/common/Button";
 import { ROUTES } from "../constants/routes";
 import useAuth from "../hooks/useAuth";
+import { destinationForRole } from "../utils/authDestination";
 
 const Login = () => {
   const { loginUser, googleLogin, resetPassword } = useAuth();
 
   const navigate = useNavigate();
   const location = useLocation();
-
-  const from = location.state || ROUTES.HOME;
 
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -35,9 +34,9 @@ const Login = () => {
   const onSubmit = async (data) => {
     try {
       setLoading(true);
-      await loginUser(data.email, data.password);
+      const { dbUser } = await loginUser(data.email, data.password);
       toast.success("Welcome back!");
-      navigate(from);
+      navigate(destinationForRole(dbUser.role,location.state),{replace:true});
     } catch (error) {
       toast.error(error.message);
     } finally {
@@ -48,9 +47,9 @@ const Login = () => {
   const handleGoogleLogin = async () => {
     try {
       setLoading(true);
-      await googleLogin();
+      const { dbUser } = await googleLogin();
       toast.success("Logged in successfully.");
-      navigate(from);
+      navigate(destinationForRole(dbUser.role,location.state),{replace:true});
     } catch (error) {
       toast.error(error.message);
     } finally {
