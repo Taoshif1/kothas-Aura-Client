@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { useHero } from "../../hooks/useHero";
+import useStoreSettings from "../../hooks/useStoreSettings";
 
 // Simple typewriter hook — types out text char by char
 const useTypewriter = (text, speed = 60, startDelay = 600) => {
@@ -30,7 +31,8 @@ const useTypewriter = (text, speed = 60, startDelay = 600) => {
 
 const Hero = () => {
   const slides = useHero();
-  const hero = slides[0];
+  const{settings}=useStoreSettings();const configured=settings.storefront?.hero;const fallback=slides[0];
+  const hero=configured?.enabled?{image:configured.image||fallback.image,eyebrow:configured.eyebrow||fallback.eyebrow,title:configured.title||fallback.title,description:configured.description||fallback.description,primaryButton:{text:configured.primaryButtonText||fallback.primaryButton.text,link:configured.primaryButtonLink||fallback.primaryButton.link},secondaryButton:{text:configured.secondaryButtonText||fallback.secondaryButton.text,link:configured.secondaryButtonLink||fallback.secondaryButton.link}}:fallback;
   const typedTitle = useTypewriter(hero.title, 55, 500);
 
   return (

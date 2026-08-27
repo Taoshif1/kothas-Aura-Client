@@ -11,16 +11,17 @@ import { Link } from "react-router-dom";
 import { SITE } from "../../../constants/site";
 import { ROUTES } from "../../../constants/routes";
 import useAuth from"../../../hooks/useAuth";
+import useStoreSettings from"../../../hooks/useStoreSettings";
 
 const Footer = () => {
-  const{dbUser}=useAuth();const accountPath=dbUser?.role==="admin"?ROUTES.ADMIN:dbUser?ROUTES.DASHBOARD:ROUTES.LOGIN;
+  const{dbUser}=useAuth();const{settings}=useStoreSettings();const contact=settings.contact||{},social=settings.social||{};const accountPath=dbUser?.role==="admin"?ROUTES.ADMIN:dbUser?ROUTES.DASHBOARD:ROUTES.LOGIN;
   return (
     <footer className="mt-24 bg-gradient-to-b from-neutral to-[#24181b] text-neutral-content">
       <div className="container-x py-20">
         {/* Brand */}
 
         <div className="border-b border-white/10 pb-12 text-center">
-          <h2 className="heading text-5xl">{SITE.name}</h2>
+          <h2 className="heading text-5xl">{settings.storeName||SITE.name}</h2>
 
           <p className="mt-4 tracking-[4px] uppercase text-white/70">
             {SITE.tagline}
@@ -78,27 +79,27 @@ const Footer = () => {
             </h3>
 
             <div className="space-y-4">
-              <a href={`tel:${SITE.phone}`} className="flex items-center gap-3 hover:text-primary">
+              <a href={`tel:${contact.phone||SITE.phone}`} className="flex items-center gap-3 hover:text-primary">
                 <FiPhone />
 
-                {SITE.phone}
+                {contact.phone||SITE.phone}
               </a>
 
-              <a href={`mailto:${SITE.email}`} className="flex items-center gap-3 hover:text-primary">
+              <a href={`mailto:${contact.email||SITE.email}`} className="flex items-center gap-3 hover:text-primary">
                 <FiMail />
 
-                {SITE.email}
+                {contact.email||SITE.email}
               </a>
 
               <p className="flex items-center gap-3">
                 <FiMapPin />
 
-                {SITE.address}
+                {contact.address||SITE.address}
               </p>
 
               <div className="mt-8 flex gap-5 text-2xl">
                 <a
-                  href={SITE.facebook}
+                  href={social.facebook||SITE.facebook}
                   target="_blank"
                   rel="noreferrer"
                   className="footer-social"
@@ -107,7 +108,7 @@ const Footer = () => {
                 </a>
 
                 <a
-                  href={SITE.instagram}
+                  href={social.instagram||SITE.instagram}
                   target="_blank"
                   rel="noreferrer"
                   className="footer-social"

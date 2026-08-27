@@ -7,8 +7,11 @@ import {
 } from "react-icons/fi";
 
 import { SITE } from "../../../constants/site";
+import useStoreSettings from "../../../hooks/useStoreSettings";
 
 const AnnouncementBar = () => {
+  const{settings}=useStoreSettings();const contact=settings.contact||{},social=settings.social||{},announcement=settings.announcement||{};
+  if(announcement.enabled===false)return null;
   return (
     <section className="hidden md:block bg-primary text-primary-content">
       <div className="container-x">
@@ -17,33 +20,33 @@ const AnnouncementBar = () => {
 
           <div className="flex items-center gap-6">
             <a
-              href={`tel:${SITE.phone}`}
+              href={`tel:${contact.phone||SITE.phone}`}
               className="flex items-center gap-2 hover:opacity-80 transition-default"
             >
               <FiPhone />
 
-              {SITE.phone}
+              {contact.phone||SITE.phone}
             </a>
 
             <a
-              href={`mailto:${SITE.email}`}
+              href={`mailto:${contact.email||SITE.email}`}
               className="flex items-center gap-2 hover:opacity-80 transition-default"
             >
               <FiMail />
 
-              {SITE.email}
+              {contact.email||SITE.email}
             </a>
           </div>
 
           {/* Center */}
 
-          <p className="font-medium tracking-wide">{SITE.announcement}</p>
+          <p className="font-medium tracking-wide">{announcement.text||SITE.announcement}</p>
 
           {/* Right */}
 
           <div className="flex items-center gap-4">
             <a
-              href={SITE.facebook}
+              href={social.facebook||SITE.facebook}
               target="_blank"
               rel="noreferrer"
               className="hover:scale-110 transition-default"
@@ -52,7 +55,7 @@ const AnnouncementBar = () => {
             </a>
 
             <a
-              href={SITE.instagram}
+              href={social.instagram||SITE.instagram}
               target="_blank"
               rel="noreferrer"
               className="hover:scale-110 transition-default"
@@ -63,7 +66,7 @@ const AnnouncementBar = () => {
             <span className="flex items-center gap-2">
               <FiMapPin />
 
-              {SITE.address}
+              {contact.address||SITE.address}
             </span>
           </div>
         </div>
