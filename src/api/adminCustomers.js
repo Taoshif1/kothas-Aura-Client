@@ -1,0 +1,1 @@
+import apiClient from"./apiClient";export const getCustomers=async params=>(await apiClient.get("/admin/customers",{params})).data;export const getCustomer=async id=>(await apiClient.get(`/admin/customers/${id}`)).data;export const setCustomerBlocked=async(id,isBlocked)=>(await apiClient.patch(`/admin/customers/${id}/status`,{isBlocked})).data.customer;

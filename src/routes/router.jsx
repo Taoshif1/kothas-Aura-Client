@@ -28,6 +28,9 @@ import AdminOverview from "../pages/admin/AdminOverview";
 import AdminProducts from "../pages/admin/AdminProducts";
 import ProductForm from "../pages/admin/ProductForm";
 import AdminCategories from "../pages/admin/AdminCategories";
+import AdminCustomers from "../pages/admin/AdminCustomers";
+import AdminCustomerDetails from "../pages/admin/AdminCustomerDetails";
+import AdminReviews from "../pages/admin/AdminReviews";
 import AdminPlaceholder from "../pages/admin/AdminPlaceholder";
 import OrderSuccess from "../pages/OrderSuccess";
 import TrackOrder from "../pages/TrackOrder";
@@ -129,8 +132,9 @@ export const router = createBrowserRouter([
       { path: "categories", element: <AdminCategories /> },
       { path: "orders", element: <AdminOrders /> },
       { path: "orders/:id", element: <AdminOrderDetails /> },
-      { path: "customers", element: <AdminPlaceholder /> },
-      { path: "reviews", element: <AdminPlaceholder /> },
+      { path: "customers", element: <AdminCustomers /> },
+      { path: "customers/:id", element: <AdminCustomerDetails /> },
+      { path: "reviews", element: <AdminReviews /> },
       { path: "coupons", element: <AdminPlaceholder /> },
       { path: "settings", element: <AdminSettings /> },
     ],
