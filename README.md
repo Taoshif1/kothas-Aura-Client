@@ -1,395 +1,50 @@
-# 💖 Kotha's Aura
+# Kotha's Aura Client
 
-A premium beauty, jewelry, and lifestyle e-commerce website built with modern web technologies. Kotha's Aura is designed with a luxurious rose-gold aesthetic, responsive UI, and scalable architecture to provide a seamless shopping experience across all devices.
+React 19/Vite storefront and operations console for Kotha's Aura. The interface uses React Router, Tailwind CSS 4, DaisyUI 5, Axios, Firebase Authentication, React Hook Form, Helmet, and toast feedback.
 
-> **Status:** 🚧 Currently Under Development
+## Architecture
 
----
+- `src/api`: shared credentialed API client and domain helpers
+- `src/components`: storefront, account, Admin, and reusable UI
+- `src/pages`: public, customer-dashboard, and Admin routes
+- `src/providers`: authentication, cart, wishlist, and store settings
+- `src/routes`: public/private/Admin routing with route-level lazy loading
 
-## ✨ Overview
+The browser authenticates with Firebase, sends the Firebase ID token to the server once, and then uses the server's HttpOnly session cookie. MongoDB—not browser state or Firebase custom claims—is authoritative for the application role.
 
-Kotha's Aura is a full-stack MERN e-commerce application focused on elegance, performance, and scalability. The project follows modern React architecture and is designed to grow from a static storefront into a production-ready online shopping platform with authentication, dashboards, product management, payments, and order tracking.
-
----
-
-## 🎯 Features
-
-### ✅ Current Features
-
-- Premium responsive UI
-- Modern luxury-inspired design
-- Rose Gold custom DaisyUI theme
-- Fully responsive navigation
-- Responsive Hero Section
-- Categories Section
-- Featured Products Section
-- Brand Story Section
-- Newsletter Section
-- Premium Footer
-- Shop Page
-- About Page
-- Contact Page
-- React Router v7 Routing
-- Reusable Components
-- Centralized Product Data
-- Clean Folder Structure
-
----
-
-## 🚀 Planned Features
-
-### Authentication
-
-- Firebase Authentication
-- Customer Registration
-- Customer Login
-- Admin Login
-- Protected Routes
-
-### Customer
-
-- Wishlist
-- Shopping Cart
-- Order Tracking
-- User Dashboard
-- Profile Management
-
-### Admin
-
-- Dashboard
-- Product Management
-- Category Management
-- Order Management
-- Customer Management
-- Analytics
-
-### E-commerce
-
-- Product Search
-- Product Filtering
-- Product Sorting
-- Product Details
-- Reviews & Ratings
-- Coupon System
-- Checkout
-- Online Payment Gateway
-
-### Backend
-
-- Express.js API
-- MongoDB Database
-- JWT Authentication
-- REST API
-- Image Upload
-- Cloud Storage
-
----
-
-# 🛠 Tech Stack
-
-## Frontend
-
-- React 19
-- Vite
-- React Router DOM v7
-- Tailwind CSS v4
-- DaisyUI v5
-- Motion
-- Swiper
-- React Icons
-- Axios
-- React Hook Form
-- React Helmet Async
-- React Hot Toast
-
----
-
-## Backend (Planned)
-
-- Node.js
-- Express.js
-- MongoDB
-- Firebase Authentication
-- JWT
-- Cloudinary
-
----
-
-# 📁 Folder Structure
-
-
-```bash
-client
-├─ eslint.config.js
-├─ index.html
-├─ package-lock.json
-├─ package.json
-├─ public
-│  ├─ favicon.svg
-│  └─ icons.svg
-├─ README.md
-├─ src
-│  ├─ assets
-│  │  ├─ hero.jpg
-│  │  ├─ logo.png
-│  │  ├─ react.svg
-│  │  └─ vite.svg
-│  ├─ components
-│  │  ├─ common
-│  │  │  ├─ Button.jsx
-│  │  │  ├─ footer
-│  │  │  │  └─ Footer.jsx
-│  │  │  ├─ header
-│  │  │  │  ├─ AnnouncementBar.jsx
-│  │  │  │  ├─ DesktopNav.jsx
-│  │  │  │  ├─ Logo.jsx
-│  │  │  │  ├─ MobileDrawer.jsx
-│  │  │  │  ├─ Navbar.jsx
-│  │  │  │  └─ NavIcons.jsx
-│  │  │  ├─ Loader.jsx
-│  │  │  ├─ ProductCard.jsx
-│  │  │  └─ SectionTitle.jsx
-│  │  ├─ dashboard
-│  │  │  ├─ DashboardCard.jsx
-│  │  │  ├─ DashboardNavbar.jsx
-│  │  │  ├─ DashboardSidebar.jsx
-│  │  │  ├─ DashboardStat.jsx
-│  │  │  └─ UserDropdown.jsx
-│  │  ├─ home
-│  │  │  ├─ BrandStory.jsx
-│  │  │  ├─ Categories.jsx
-│  │  │  ├─ FeaturedProducts.jsx
-│  │  │  ├─ Hero.jsx
-│  │  │  └─ Newsletter.jsx
-│  │  └─ shop
-│  │     ├─ CategoryChips.jsx
-│  │     ├─ ProductGrid.jsx
-│  │     ├─ ShopBanner.jsx
-│  │     ├─ ShopSearch.jsx
-│  │     └─ ShopSort.jsx
-│  ├─ constants
-│  │  ├─ colors.js
-│  │  ├─ routes.js
-│  │  └─ site.js
-│  ├─ context
-│  │  └─ AuthContext.jsx
-│  ├─ data
-│  │  ├─ categoryData.js
-│  │  ├─ heroData.js
-│  │  └─ productData.js
-│  ├─ firebase
-│  │  └─ firebase.config.js
-│  ├─ hooks
-│  │  ├─ useAuth.js
-│  │  └─ useHero.js
-│  ├─ index.css
-│  ├─ layouts
-│  │  ├─ DashboardLayout.jsx
-│  │  └─ MainLayout.jsx
-│  ├─ main.jsx
-│  ├─ pages
-│  │  ├─ About.jsx
-│  │  ├─ Contact.jsx
-│  │  ├─ dashboard
-│  │  │  ├─ Cart.jsx
-│  │  │  ├─ DashboardHome.jsx
-│  │  │  ├─ MyOrders.jsx
-│  │  │  ├─ MyProfile.jsx
-│  │  │  ├─ Settings.jsx
-│  │  │  └─ Wishlist.jsx
-│  │  ├─ Error.jsx
-│  │  ├─ Home.jsx
-│  │  ├─ Login.jsx
-│  │  ├─ Register.jsx
-│  │  └─ Shop.jsx
-│  ├─ providers
-│  │  └─ AuthProvider.jsx
-│  ├─ routes
-│  │  ├─ PrivateRoute.jsx
-│  │  └─ router.jsx
-│  └─ utils
-└─ vite.config.js
-
-```
-
----
-
-# 🎨 Theme
-
-Kotha's Aura uses a custom DaisyUI theme inspired by luxury beauty brands.
-
-| Color      | Hex       |
-| ---------- | --------- |
-| Primary    | `#D98C9A` |
-| Secondary  | `#C98A7D` |
-| Accent     | `#E8B7C0` |
-| Background | `#FDF5F6` |
-| Neutral    | `#3F2E33` |
-
----
-
-# 📦 Installation
-
-Clone the repository
-
-```bash
-git clone https://github.com/yourusername/kothas-aura.git
-```
-
-Go to the project directory
-
-```bash
-cd client
-```
-
-Install dependencies
+## Setup
 
 ```bash
 npm install
-```
-
-Start development server
-
-```bash
 npm run dev
 ```
 
----
+Copy `.env.example` to `.env` and supply the API URL and Firebase public web configuration. Never place Firebase Admin credentials, MongoDB credentials, or JWT secrets in client variables.
 
-# 📜 Available Scripts
+## Routes and flows
 
-Start development server
+Public routes cover Home, Shop/search/filtering, Product Details/reviews, About, Contact, Cart, Wishlist, Checkout, order success, and public tracking. Authenticated customers receive Dashboard, Profile, Orders, order details, and Addresses. Admin routes cover Overview, Products, Categories, Orders, Customers, Reviews, Coupons, Messages, Subscribers, and Store Settings.
 
-```bash
-npm run dev
-```
+Store Settings are fetched once through `StoreSettingsProvider` and drive announcement, hero, contact, social, delivery, payment, maintenance, and SEO fallback content.
 
-Build for production
+Payments in V1 are COD plus manually verified bKash/Nagad. The client never decides authoritative price, stock, discount, payment status, review approval, role, or order ownership.
 
-```bash
-npm run build
-```
-
-Preview production build
-
-```bash
-npm run preview
-```
-
-Run ESLint
+## Quality commands
 
 ```bash
 npm run lint
+npm run build
+npm run preview
 ```
 
----
+No browser unit-test stack is added. Before release, manually verify public search/shop/product/contact flows, customer profile/address/checkout/order flows, and every Admin operational section at mobile and desktop widths.
 
-# 📱 Responsive Design
+## Deployment (Vercel)
 
-The website is optimized for:
+1. Configure all `VITE_*` variables in Vercel.
+2. Set `VITE_API_URL` to the HTTPS server URL ending in `/api`.
+3. Add the production domain to Firebase Authentication authorized domains.
+4. Ensure the server allowlist includes the exact Vercel origin.
+5. Build with `npm run build`; publish `dist` using SPA fallback routing.
 
-- Desktop
-- Laptop
-- Tablet
-- Mobile
-
----
-
-# 🏗 Architecture
-
-The project follows a scalable component-based architecture.
-
-- Reusable Components
-- Centralized Constants
-- Shared Product Data
-- Route-Based Layouts
-- Modular Folder Structure
-- Future-ready Backend Integration
-
----
-
-# 📈 Future Roadmap
-
-- Firebase Authentication
-- Admin Dashboard
-- Customer Dashboard
-- MongoDB Integration
-- REST API
-- Search System
-- Wishlist
-- Shopping Cart
-- Checkout
-- Payment Gateway
-- Order Tracking
-- Product Reviews
-- Inventory Management
-- Analytics Dashboard
-- SEO Optimization
-- Performance Optimization
-
----
-
-# 👨‍💻 Developer
-
-**Designed & Developed by**
-
-## Taoshiflex Studio
-
-Building modern, scalable, and premium web experiences for businesses.
-
-GitHub:
-[GitHub](https://github.com/Taoshif1)
-
-Portfolio:
-[Portfolio](https://taoshif1.github.io/webdevportfolio/)
-
----
-
-# 📄 License
-
-This project is developed for **Kotha's Aura**.
-
-All rights reserved © 2026.
-
----
-
-# ❤️ Acknowledgements
-
-Built using:
-
-- React
-- Vite
-- Tailwind CSS
-- DaisyUI
-- Motion
-- Swiper
-- Firebase
-- React Router
-- React Icons
-
----
-
-## ⭐ Project Status
-
-🚧 **Work in Progress**
-
-Current Progress
-
-- ✅ Home Page
-- ✅ Shop Page
-- ✅ About Page
-- ✅ Contact Page
-- ✅ Responsive Navbar
-- ✅ Premium Footer
-- ✅ Reusable Components
-- 🚧 Authentication
-- 🚧 Customer Dashboard
-- 🚧 Admin Dashboard
-- 🚧 Backend API
-- 🚧 MongoDB
-- 🚧 Payment Integration
-
----
-
-If you like this project, consider giving it a ⭐ on GitHub!
-
+The API must use HTTPS because production authentication uses a Secure, HttpOnly, `SameSite=None` cookie across origins.
