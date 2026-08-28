@@ -22,7 +22,7 @@ createRoot(document.getElementById("root")).render(
       </CartProvider></StoreSettingsProvider>
 
       <Toaster
-        position="top-right"
+        position="bottom-right"
         reverseOrder={false}
         toastOptions={{
           duration: 3000,
